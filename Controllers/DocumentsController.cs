@@ -35,7 +35,7 @@ public class DocumentsController: Controller
     [ValidateAntiForgeryToken]
     public async Task<ActionResult> Create(DocumentModel request)
     {
-        request.CreatedDate= DateTime.Now;
+        request.CreatedDate= DateTime.UtcNow;
         _dbContext.Documents.Add(request); 
         _dbContext.SaveChanges();
         return RedirectToAction("Index","Home");
