@@ -54,7 +54,7 @@ public class HomeController : Controller
 
     public IActionResult DownloadFile(string fileName)
     {
-        var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Uploads", fileName);
+        var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", fileName);
 
         if (System.IO.File.Exists(filePath))
         {

@@ -45,7 +45,7 @@ public class DocumentsController: Controller
             return View();
         }
         
-        var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Uploads", file.FileName);
+        var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", file.FileName);
 
         using (var stream = new FileStream(filePath, FileMode.Create)) 
         {
