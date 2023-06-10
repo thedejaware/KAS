@@ -1,7 +1,111 @@
 @model DocumentModel
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+  Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Privacy Policy";
 }
+<form asp-controller="Documents" asp-action="Update">
+  <input type="hidden" asp-for="Id" />
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
 
-<h1>Update sayfası</h1>
+        <!-- /.card-header -->
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Doküman Tipi</label>
+                <select class="form-control select2" style="width: 100%;" asp-for="DocumentType">
+                  @foreach (var documentType in (List<DocumentTypeModel>)ViewBag.DocumentTypes)
+                  {
+                    <option value="@documentType.Id">@documentType.Title</option>
+                  }
+                </select>
+              </div>
+              <!-- /.form-group -->
+            </div>
+            <!-- /.col -->
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Maden Tipi</label>
+                <select class="form-control select2" style="width: 100%;" asp-for="MineType">
+                  @foreach (var mineType in (List<MineTypeModel>)ViewBag.MineTypes)
+                  {
+                    <option value="@mineType.Id">@mineType.Title</option>
+                  }
+                </select>
+              </div>
+              <!-- /.form-group -->
+            </div>
+            <!-- /.col -->
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Şehir</label>
+                <select class="form-control select2" style="width: 100%;" asp-for="City">
+                  @foreach (var city in (List<CityModel>)ViewBag.Cities)
+                  {
+                    <option value="@city.Id">@city.Title</option>
+                  }
+                </select>
+              </div>
+              <!-- /.form-group -->
+            </div>
+            <!-- /.col -->
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Başlangıç Yılı</label>
+                <select class="form-control select2" style="width: 100%;" asp-for="StartYear">
+                  @foreach (var sYear in (List<StartYearModel>)ViewBag.StartYears)
+                  {
+                    <option value="@sYear.Id">@sYear.Title</option>
+                  }
+                </select>
+              </div>
+              <!-- /.form-group -->
+            </div>
+            <!-- /.col -->
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Bitiş Yılı</label>
+                <select class="form-control select2" style="width: 100%;" asp-for="EndYear">
+                  @foreach (var eYear in (List<EndYearModel>)ViewBag.EndYears)
+                  {
+                    <option value="@eYear.Id">@eYear.Title</option>
+                  }
+                </select>
+              </div>
+              <!-- /.form-group -->
+            </div>
+            <!-- /.col -->
+          </div>
+
+        </div>
+
+        <div class="card-footer">
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <a href="~/Home/Index" class="btn btn-default">Cancel</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+
+<script>
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2();
+  });
+</script>

@@ -3,7 +3,7 @@
   Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Privacy Policy";
 }
-<form asp-controller="Documents" asp-action="Create">
+<form asp-controller="Documents" enctype="multipart/form-data" asp-action="Create">
   <div class="row">
     <div class="col-12">
       <div class="card">
@@ -89,7 +89,25 @@
             </div>
             <!-- /.col -->
           </div>
+          
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="exampleInputFile">Dosya</label>
+                <div class="input-group">
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" name="file" id="exampleInputFile">
+                    <label class="custom-file-label" for="exampleInputFile">Dosya Seç</label>
+                  </div>
+                </div>
+              </div>
 
+              <!-- /.form-group -->
+            </div>
+            <!-- /.col -->
+          </div>
+          
+          
         </div>
       
         <div class="card-footer">
@@ -101,10 +119,10 @@
   </div>
 </form>
 
-
 <script>
   $(function () {
     //Initialize Select2 Elements
     $('.select2').select2();
+    bsCustomFileInput.init();
   });
 </script>

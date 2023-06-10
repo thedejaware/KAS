@@ -52,6 +52,19 @@ public class HomeController : Controller
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 
+    public IActionResult DownloadFile(string fileName)
+    {
+        var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Uploads", fileName);
+
+        if (System.IO.File.Exists(filePath))
+        {
+            var fileBytes = System.IO.File.ReadAllBytes(filePath);
+            return File(fileBytes, "application/octet-stream", fileName);
+        }
+
+        return NotFound();
+    }
+    
     private List<DocumentViewModel> GetDocuments()
     {
         return (from doc in _dbContext.Documents
@@ -63,6 +76,7 @@ public class HomeController : Controller
             select new DocumentViewModel
             {
                 Id = doc.Id,
+                Filename = doc.Filename,
                 DocumentType = docType.Title,
                 MineType = mineType.Title,
                 City = city.Title,

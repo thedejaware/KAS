@@ -8,4 +8,5 @@ public class DocumentModel: IEntity
     public long StartYear { get; set; }
     public long EndYear { get; set; }
     public DateTime CreatedDate { get; set; }
+    public string Filename { get; set; }
 }

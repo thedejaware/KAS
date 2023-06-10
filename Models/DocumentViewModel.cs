@@ -3,6 +3,7 @@ namespace KAS.CMS.Models;
 public class DocumentViewModel
 {
     public long Id { get; set; }
+    public string Filename { get; set; }
     public string DocumentType { get; set; }
     public string MineType { get; set; }
     public string City { get; set; }

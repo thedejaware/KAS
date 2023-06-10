@@ -33,10 +33,10 @@
                 <table id="example" class="table table-bordered table-hover">
                   <thead>
                   <tr>
-                    <th>Doküman Tipi</th>
-                    <th>Maden Tipi</th>
-                    <th>Şehir</th>
-                    <th>Başlangıç Yılı</th>
+                      <th>Doküman Tipi</th>
+                      <th>Maden Tipi</th>
+                      <th>Şehir</th>
+                      <th>Başlangıç Yılı</th>
                       <th>Bitiş Yılı</th>
                       <th>Yükleme Tarihi</th>
                       <th></th>
@@ -54,6 +54,7 @@
                         <td>@item.CreatedDate</td>
                         <td>
                             <a type="button" class="btn btn-primary btn-sm" asp-action="Update" asp-route-id="@item.Id">Düzenle</a>
+                            <a type="button" class="btn btn-success btn-sm" title="@item.Filename" asp-action="DownloadFile" asp-route-fileName="@item.Filename"><i class="fas fa-download"></i></a>
                             <form asp-action="Remove" class="d-inline" onsubmit="return confirm('Dosyayı silmek istediğinizden emin misiniz?');">
                                 <input type="hidden" name="id" value="@item.Id"/>
                                 <button type="submit" class="btn btn-danger btn-sm">Sil</button>
