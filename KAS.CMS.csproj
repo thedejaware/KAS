@@ -25,7 +25,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Remove="Properties\launchSettings 2.json" />
+      <None Remove="Properties\launchSettings.json" />
     </ItemGroup>
 
 </Project>
