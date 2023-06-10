@@ -22,6 +22,11 @@ public class HomeController : Controller
         return View();
     }
     
+    public IActionResult Login()
+    {
+         return View();
+    }
+    
     [HttpPost]
     [ValidateAntiForgeryToken]
     public IActionResult Remove(long id)
