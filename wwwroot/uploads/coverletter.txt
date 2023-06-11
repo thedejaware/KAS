@@ -1,0 +1,16 @@
+Dear Human Resources Team,
+
+Please find my resume as an expressed interest in exploring the possibilities of joining your department and organization in a "Senior Software Engineer .NET" position.
+
+I have more than 10 years experience in developing C#.NET and ASP.NET applications. And I really love developing .NET applications. I've graduated as a geological engineering. After that I've taken a course of Software Development and Database Administrator. Graduated as a Geological Engineering was a big challenge for me in this sector and I have met the challenges presented in this field over the past 12 years as a professional Software Developer. I'm doing my best to improve myself. I consider myself to be a results-oriented and capable worker. My attention to learning and searching new development technologies and good communication abilities have allowed me to achieve and exist in this field.
+
+I have worked as a front-end and back-end developer. Now I'm working as a Senior Software Engineer and responsible for leading my colleagues and alignment of the technical direction. You can find detailed information on my resume but I want to say that I have an expertise in C#, .NET CORE, ASP.NET, ASP.NET MVC, CQRS Pattern with MediatR, Javascript, jQuery, Typescript, AJAX, SignalR, NodeJS, Angular, CSS, HTML5, Docker, RabbitMQ, Firebase, PostgreSQL, MSSQL.
+
+I believe I can bring many benefits with my experience.
+
+I look forward to speaking with you about this opportunity.
+
+Thank you for your consideration.
+
+Sincerely,
+Mehmet AKIN

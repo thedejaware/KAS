@@ -1,9 +1,9 @@
 @model DocumentModel
 @{
   Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = "Doküman Güncelle";
 }
-<form asp-controller="Documents" asp-action="Update">
+<form asp-controller="Documents" enctype="multipart/form-data" asp-action="Update">
   <input type="hidden" asp-for="Id" />
   <div class="row">
     <div class="col-12">
@@ -91,6 +91,37 @@
             <!-- /.col -->
           </div>
 
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="upoadedFile">Yüklenen Belge Adı</label>
+                @Model.Filename
+              </div>
+                        
+              <!-- /.form-group -->
+            </div>
+            <!-- /.col -->
+          </div>
+          
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="exampleInputFileUpdate">Dosya Yükle</label>
+                <div class="input-group">
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" name="file" id="exampleInputFileUpdate">
+                    <label class="custom-file-label" for="exampleInputFileUpdate">Dosya Seç</label>
+                  </div>
+                </div>
+              </div>
+          
+              
+              
+              <!-- /.form-group -->
+            </div>
+            <!-- /.col -->
+          </div>
+          
         </div>
 
         <div class="card-footer">
@@ -107,5 +138,6 @@
   $(function () {
     //Initialize Select2 Elements
     $('.select2').select2();
+    bsCustomFileInput.init();
   });
 </script>

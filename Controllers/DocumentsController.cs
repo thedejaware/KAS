@@ -75,7 +75,7 @@ public class DocumentsController: Controller
     
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<ActionResult> Update(DocumentModel request)
+    public async Task<ActionResult> Update(IFormFile file, DocumentModel request)
     {
         var documentInDb = _dbContext.Documents.FirstOrDefault(p=>p.Id == request.Id);
         documentInDb.DocumentType = request.DocumentType;
@@ -83,6 +83,17 @@ public class DocumentsController: Controller
         documentInDb.City = request.City;
         documentInDb.StartYear = request.StartYear;
         documentInDb.EndYear = request.EndYear;
+        if (file != null && file.Length > 0)
+        {
+            documentInDb.Filename = file.FileName;
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", file.FileName);
+
+            using (var stream = new FileStream(filePath, FileMode.Create)) 
+            {
+                file.CopyTo(stream); 
+            }
+
+        }
         _dbContext.Documents.Update(documentInDb);
         _dbContext.SaveChanges();
         return RedirectToAction("Index","Home");
