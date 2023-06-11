@@ -1,0 +1,100 @@
+@model FilterViewModel
+
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<!-- Sidebar -->
+<div class="sidebar">
+<!-- Sidebar user panel (optional) -->
+<div class="user-panel mt-3 pb-3 mb-3 d-flex">
+  <div class="info">
+    <a href="#" class="d-block font-kas">KAS | Kiaş Arşiv Sistemi</a>
+  </div>
+</div>
+
+
+<!-- Sidebar Menu -->
+<nav class="mt-2">
+<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+  <!-- Add icons to the links using the .nav-icon class
+  with font-awesome or any other icon font library -->
+  @{
+    if (@Model.DocumentTypeFilters.Count > 0)
+    {
+      <li class="nav-item menu-is-opening menu-open">
+        <a href="#" class="nav-link">
+          <p>
+            Doküman Tipi
+            <i class="fas fa-angle-left right"></i>
+          </p>
+        </a>
+        <ul class="nav nav-treeview">
+          @foreach (var item in (List<DocumentTypeFilterViewModel>)@Model.DocumentTypeFilters)
+          {
+            <li class="nav-item">
+              <a href="@Url.Action("Index", "Home", new { docTypeId = @item.Id })" class="nav-link">
+                <p>
+                  @item.Title
+                  <span class="badge badge-info right">@item.Count</span>
+                </p>
+              </a>
+            </li>
+          }
+        </ul>
+      </li>
+    }
+    if (@Model.MineTypeFilters.Count > 0)
+    {
+      <li class="nav-item menu-is-opening menu-open">
+        <a href="#" class="nav-link">
+          <p>
+            Maden Tipi
+            <i class="fas fa-angle-left right"></i>
+          </p>
+        </a>
+        <ul class="nav nav-treeview">
+          @foreach (var item in (List<MineTypeFilterViewModel>)@Model.MineTypeFilters)
+          {
+            <li class="nav-item">
+              <a href="@Url.Action("Index", "Home", new { mineTypeId = @item.Id })" class="nav-link">
+                <p>
+                  @item.Title
+                  <span class="badge badge-info right">@item.Count</span>
+                </p>
+              </a>
+            </li>
+          }
+        </ul>
+      </li>
+    }
+
+    if (@Model.CityFilters.Count > 0)
+    {
+      <li class="nav-item menu-is-opening menu-open">
+        <a href="#" class="nav-link">
+          <p>
+            Şehir
+            <i class="fas fa-angle-left right"></i>
+          </p>
+        </a>
+        <ul class="nav nav-treeview">
+          @foreach (var item in (List<CityFilterViewModel>)@Model.CityFilters)
+          {
+            <li class="nav-item">
+              <a href="@Url.Action("Index", "Home", new { cityId = @item.Id })" class="nav-link">
+                <p>
+                  @item.Title
+                  <span class="badge badge-info right">@item.Count</span>
+                </p>
+              </a>
+            </li>
+          }
+        </ul>
+      </li>
+    }
+  }
+  
+</ul>
+</nav>
+<!-- /.sidebar-menu -->
+</div>
+<!-- /.sidebar -->
+</aside>

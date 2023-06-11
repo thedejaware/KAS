@@ -3,6 +3,9 @@
   Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Doküman Ekle";
 }
+@{
+    Html.RenderPartial("_Filters", new FilterViewModel());
+}
 <form asp-controller="Documents" enctype="multipart/form-data" asp-action="Create">
   <div class="row">
     <div class="col-12">

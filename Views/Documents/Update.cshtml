@@ -3,6 +3,11 @@
   Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Doküman Güncelle";
 }
+
+@{
+    Html.RenderPartial("_Filters", new FilterViewModel());
+}
+
 <form asp-controller="Documents" enctype="multipart/form-data" asp-action="Update">
   <input type="hidden" asp-for="Id" />
   <div class="row">

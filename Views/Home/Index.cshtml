@@ -1,4 +1,5 @@
-﻿@{
+﻿@model FilterViewModel
+@{
   Layout = "~/Views/Shared/_Layout.cshtml";
   ViewData["Title"] = "KİAŞ Arşiv Sistemi";
 }
@@ -10,78 +11,81 @@
 <!-- Content Header (Page header) -->
    
 <!-- /.content-header -->
-
+<!-- Main Sidebar Container -->
+@{
+    Html.RenderPartial("_Filters", Model);
+}
 <div class="row">
-          <div class="col-12">
-            <div class="card">
-               <div class="card-header">
-                              <h3 class="card-title">
-                                <i class="fas fa-solid fa-list-ul"></i>
-                                Dokümanlar
-                              </h3>
-                              <div class="card-tools">
-                                <ul class="nav nav-pills ml-auto">
-                                  <li class="nav-item">
-                                    <a class="btn btn-success" href="~/Documents/Create"><i class="fas fa-plus"></i>&nbsp;Ekle</a>
-                                  </li>
-                                </ul>
-                              </div>
-               </div><!-- /.card-header -->
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">
+          <i class="fas fa-solid fa-list-ul"></i>
+          Dokümanlar
+        </h3>
+        <div class="card-tools">
+          <ul class="nav nav-pills ml-auto">
+            <li class="nav-item">
+              <a class="btn btn-success" href="~/Documents/Create"><i class="fas fa-plus"></i>&nbsp;Ekle</a>
+            </li>
+          </ul>
+        </div>
+      </div><!-- /.card-header -->
             
-              <!-- /.card-header -->
-              <div class="card-body">
-                <table id="example" class="table table-bordered table-hover">
-                  <thead>
-                  <tr>
-                      <th>Doküman Tipi</th>
-                      <th>Maden Tipi</th>
-                      <th>Şehir</th>
-                      <th>Başlangıç Yılı</th>
-                      <th>Bitiş Yılı</th>
-                      <th>Yükleme Tarihi</th>
-                      <th></th>
-                  </tr>
-                  </thead>
-                <tbody>
-                @foreach (var item in (List<DocumentViewModel>)ViewBag.Documents)
-                {
-                    <tr>
-                        <td>@item.DocumentType</td>
-                        <td>@item.MineType</td>
-                        <td>@item.City</td>
-                        <td>@item.StartYear</td>
-                        <td>@item.EndYear</td>
-                        <td>@item.CreatedDate</td>
-                        <td>
-                            <a type="button" class="btn btn-primary btn-sm" asp-action="Update" asp-route-id="@item.Id">Düzenle</a>
-                            <a type="button" class="btn btn-success btn-sm" title="@item.Filename" asp-action="DownloadFile" asp-route-fileName="@item.Filename"><i class="fas fa-download"></i></a>
-                            <form asp-action="Remove" class="d-inline" onsubmit="return confirm('Dosyayı silmek istediğinizden emin misiniz?');">
-                                <input type="hidden" name="id" value="@item.Id"/>
-                                <button type="submit" class="btn btn-danger btn-sm">Sil</button>
-                            </form>
+      <!-- /.card-header -->
+      <div class="card-body">
+        <table id="example" class="table table-bordered table-hover">
+          <thead>
+          <tr>
+            <th>Doküman Tipi</th>
+            <th>Maden Tipi</th>
+            <th>Şehir</th>
+            <th>Başlangıç Yılı</th>
+            <th>Bitiş Yılı</th>
+            <th>Yükleme Tarihi</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          @foreach (var item in (List<DocumentViewModel>)ViewBag.Documents)
+          {
+            <tr>
+              <td>@item.DocumentType</td>
+              <td>@item.MineType</td>
+              <td>@item.City</td>
+              <td>@item.StartYear</td>
+              <td>@item.EndYear</td>
+              <td>@item.CreatedDate</td>
+              <td>
+                <a type="button" class="btn btn-primary btn-sm" asp-action="Update" asp-route-id="@item.Id">Düzenle</a>
+                <a type="button" class="btn btn-success btn-sm" title="@item.Filename" asp-action="DownloadFile" asp-route-fileName="@item.Filename"><i class="fas fa-download"></i></a>
+                <form asp-action="Remove" class="d-inline" onsubmit="return confirm('Dosyayı silmek istediğinizden emin misiniz?');">
+                  <input type="hidden" name="id" value="@item.Id"/>
+                  <button type="submit" class="btn btn-danger btn-sm">Sil</button>
+                </form>
 
-                        </td>
-                    </tr>
-                }
-                </tbody>
-                  <tfoot>
-                  <tr>
-                      <th>Doküman Tipi</th>
-                      <th>Maden Tipi</th>
-                      <th>Şehir</th>
-                      <th>Başlangıç Yılı</th>
-                      <th>Bitiş Yılı</th>
-                      <th>Yükleme Tarihi</th>
-                      <td></td>
-                  </tr>
-                  </tfoot>
-                </table>
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-          </div>
-          <!-- /.col -->
+              </td>
+            </tr>
+          }
+          </tbody>
+          <tfoot>
+          <tr>
+            <th>Doküman Tipi</th>
+            <th>Maden Tipi</th>
+            <th>Şehir</th>
+            <th>Başlangıç Yılı</th>
+            <th>Bitiş Yılı</th>
+            <th>Yükleme Tarihi</th>
+            <td></td>
+          </tr>
+          </tfoot>
+        </table>
+      </div>
+      <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+  </div>
+  <!-- /.col -->
 </div>
 
 <!-- DataTables  & Plugins -->
